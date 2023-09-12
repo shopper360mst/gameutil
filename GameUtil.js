@@ -16,162 +16,162 @@ export default class GameUtil {
      * }
      */
     static setData(key, value) {
-            this[key] = value;
-        }
-        /**
-         * returns key value.
-         * 
-         * @param {String} key any key related, you need know your key.
-         * @returns {Any}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let bIsGameOver = GameUtil.getData('isGameOver');
-         *          if (bIsGameOver) {
-         *                 alert('Tada');
-         *          }
-         *      }
-         * }
-         */
+        this[key] = value;
+    }
+    /**
+     * returns key value.
+     * 
+     * @param {String} key any key related, you need know your key.
+     * @returns {Any}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let bIsGameOver = GameUtil.getData('isGameOver');
+     *          if (bIsGameOver) {
+     *                 alert('Tada');
+     *          }
+     *      }
+     * }
+     */
     static getData(key) {
-            return this[key];
-        }
-        /**
-         * returns string of value kept in key, this copy of the value.
-         * 
-         * @param {String} key any key related, you need know your key.
-         * @returns {Object}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let COPIED_CONFIG = GameUtil.copyJSONData('CONFIG');
-         *          console.log( 'We can modify COPIED_CONFIG values here', COPIED_CONFIG );
-         *      }
-         * }
-         */
+        return this[key];
+    }
+    /**
+     * returns string of value kept in key, this copy of the value.
+     * 
+     * @param {String} key any key related, you need know your key.
+     * @returns {Object}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let COPIED_CONFIG = GameUtil.copyJSONData('CONFIG');
+     *          console.log( 'We can modify COPIED_CONFIG values here', COPIED_CONFIG );
+     *      }
+     * }
+     */
     static copyJSONData(key) {
-            var copied = JSON.stringify(this[key]);
-            return JSON.parse(copied);
-        }
-        /**
-         * Pick a number of random positions in given arraylist.
-         * 
-         * @param {Integer} no_items no of items you want from the second parameter which is an array.
-         * @param {Array} array_list array of list.
-         * @returns {Array}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let no_items = 2;
-         *          let a_list = ['Banana', 'Orange', 'Durian', 'Pineapple', 'Mango', 'Laici', 'Watermelon'];
-         *          let result = GameUtil.pickFromList(no_items,a_list);
-         *          console.log(result);
-         *      }
-         * }
-         */
+        var copied = JSON.stringify(this[key]);
+        return JSON.parse(copied);
+    }
+    /**
+     * Pick a number of random positions in given arraylist.
+     * 
+     * @param {Integer} no_items no of items you want from the second parameter which is an array.
+     * @param {Array} array_list array of list.
+     * @returns {Array}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let no_items = 2;
+     *          let a_list = ['Banana', 'Orange', 'Durian', 'Pineapple', 'Mango', 'Laici', 'Watermelon'];
+     *          let result = GameUtil.pickFromList(no_items,a_list);
+     *          console.log(result);
+     *      }
+     * }
+     */
     static pickFromList(no_items, arrayList) {
-            const shuffled = arrayList.sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, no_items);
-        }
-        /**
-         * returns computed delta time, the third parameter determines the mode.
-         * 
-         * @param {Date} startTime start date time, in javascript Date object.
-         * @param {Date} endTime end date time, in javascript Date object.
-         * @returns {Integer}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction(time1,time2) {
-         *          let deltaMilisecs = GameUtil.deltaTime(time1,time2,'miliseconds');
-         *          console.log(deltaMilisecs);
-         *      }
-         * }
-         */
+        const shuffled = arrayList.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, no_items);
+    }
+    /**
+     * returns computed delta time, the third parameter determines the mode.
+     * 
+     * @param {Date} startTime start date time, in javascript Date object.
+     * @param {Date} endTime end date time, in javascript Date object.
+     * @returns {Integer}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction(time1,time2) {
+     *          let deltaMilisecs = GameUtil.deltaTime(time1,time2,'miliseconds');
+     *          console.log(deltaMilisecs);
+     *      }
+     * }
+    */
     static deltaTime(startTime, endTime, mode) {
-            var fT = endTime.getTime() - startTime.getTime();
-            console.log('fT', fT);
-            switch (mode) {
-                case "seconds":
-                    return fT / 1000;
-                case "milliseconds":
-                    return fT;
-                default:
-                    return fT;
-            }
+        var fT = endTime.getTime() - startTime.getTime();
+        console.log('fT', fT);
+        switch (mode) {
+            case "seconds":
+                return fT / 1000;
+            case "milliseconds":
+                return fT;
+            default:
+                return fT;
         }
-        /**
-         * find a character or word within a string.
-         * 
-         * @param {String} sKeyword string or character keyword to find
-         * @param {String} fullString the full set of string
-         * @returns {Boolean}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let food = "orange";
-         *          let phrase = "William loves to eat orange";
-         *          let bFound = GameUtil.findExist(food,phrase);
-         *          console.log(bFound);
-         *      }
-         * } 
-         */
+    }
+    /**
+     * find a character or word within a string.
+     * 
+     * @param {String} sKeyword string or character keyword to find
+     * @param {String} fullString the full set of string
+     * @returns {Boolean}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let food = "orange";
+     *          let phrase = "William loves to eat orange";
+     *          let bFound = GameUtil.findExist(food,phrase);
+     *          console.log(bFound);
+     *      }
+     * } 
+     */
     static findExist(sKeyword, fullString) {
-            if (fullString.indexOf(sKeyword) === -1) {
-                return false;
-            } else {
-                return true;
-            }
+        if (fullString.indexOf(sKeyword) === -1) {
+            return false;
+        } else {
+            return true;
         }
-        /**
-         * find a distance between two point system in canvas.
-         * 
-         * @param {Number} x1 coordinate of x for first point
-         * @param {Number} x2 coordinate of x for second point
-         * @param {Number} y1 coordinate of y for first point
-         * @param {Number} y2 coordinate of y for second point
-         * @returns {Number}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let x1 = 10.5;
-         *          let x2 = 50;
-         *          let y1 = 20;
-         *          let y2 = 30;
-         *          console.log(GameUtil.calcVectorDistance(x1,x2,y1,y2));
-         *      }
-         * } 
-         */
+    }
+    /**
+     * find a distance between two point system in canvas.
+     * 
+     * @param {Number} x1 coordinate of x for first point
+     * @param {Number} x2 coordinate of x for second point
+     * @param {Number} y1 coordinate of y for first point
+     * @param {Number} y2 coordinate of y for second point
+     * @returns {Number}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let x1 = 10.5;
+     *          let x2 = 50;
+     *          let y1 = 20;
+     *          let y2 = 30;
+     *          console.log(GameUtil.calcVectorDistance(x1,x2,y1,y2));
+     *      }
+     * } 
+     */
     static calcVectorDistance(x1, x2, y1, y2) {
-            let a = x1 - x2;
-            let b = y1 - y2;
-            let c = Math.sqrt(a * a + b * b);
-            return c;
-        }
-        /**
-         * To calculate bonus and multiplier.
-         * 
-         * @param {Number} seed variable by the system
-         * @param {Number} multiplier additional multiplier 
-         * @param {Number} bonus additional fixed bonus
-         * @returns {Number}
-         * @example
-         * import GameUtil from './gameutil/GameUtil.js'; 
-         * export default class Something {
-         *      someFunction() {
-         *          let seed = 500;
-         *          let multiplier = 5;
-         *          let bonus = 1000;
-         *          console.log(GameUtil.calculateFS(seed, multiplier, bonus));
-         *          console.log(GameUtil.calculateFS(seed, multiplier));
-         *      }
-         * } 
-         */
+        let a = x1 - x2;
+        let b = y1 - y2;
+        let c = Math.sqrt(a * a + b * b);
+        return c;
+    }
+    /**
+     * To calculate bonus and multiplier.
+     * 
+     * @param {Number} seed variable by the system
+     * @param {Number} multiplier additional multiplier 
+     * @param {Number} bonus additional fixed bonus
+     * @returns {Number}
+     * @example
+     * import GameUtil from './gameutil/GameUtil.js'; 
+     * export default class Something {
+     *      someFunction() {
+     *          let seed = 500;
+     *          let multiplier = 5;
+     *          let bonus = 1000;
+     *          console.log(GameUtil.calculateFS(seed, multiplier, bonus));
+     *          console.log(GameUtil.calculateFS(seed, multiplier));
+     *      }
+     * } 
+     */
     static calculateFS(seed, multiplier, bonus) {
         if (bonus) {
             return ((seed * multiplier) + bonus);
@@ -197,24 +197,45 @@ export default class GameUtil {
      * } 
      */
     static calcHeightRatio(width, height) {
-            var windowRatio = window.innerWidth / window.innerHeight;
-            if (windowRatio < width / height) {
-                var computedHeight = width / windowRatio;
-                return computedHeight;
-            } else {
-                return height;
-            }
+        var windowRatio = window.innerWidth / window.innerHeight;
+        if (windowRatio < width / height) {
+            var computedHeight = width / windowRatio;
+            return computedHeight;
+        } else {
+            return height;
         }
-        /**
-         * To utility to return an empty highscore list used for game starters prior real entry.
-         * 
-         * @returns {Object}
-         */
-    static populateStubHighscore() {
-        let emptyHS = [];
-        for (var i = 0; i < 10; i++) {
-            emptyHS.push({ "name": "No Entry Yet", "score": 0 });
-        }
-        return emptyHS;
+    }
+    
+     /**
+     * setSessionStorage - stores usually a json object to session storage. Session Storage get destroyed if browsers (mobile is inactive given timelapsed) or browser window quits.
+     * @param {String} key 
+     * @param {Object} value 
+     */
+     static setSessionStorage(key, value) {
+        sessionStorage.setItem(key, value);
+    }
+    /**
+     * getSessionStorage - retrieve a json object to session storage. Session Storage get destroyed if browsers (mobile is inactive given timelapsed) or browser window quits.
+     * @param {String} key 
+     * @return {Object} value 
+     */
+    static getSessionStorage(key) {
+        return sessionStorage.getItem(key);
+    }
+    /**
+     * setLocalStorage - similar to session storage stores usually a json object to localstorage. Localstorage do not get deleted even if user close or clear cache.
+     * @param {String} key 
+     * @param {Object} value 
+     */
+    static setLocalStorage(key, value) {
+        localStorage.setItem(key, value);
+    }
+    /**
+     * getLocalStorage - obtain the localstorage data with the key. Best practice is to store it as object.
+     * @param {String} key 
+     * @return {Object}
+     */
+    static getLocalStorage(key) {
+        return localStorage.getItem(key);
     }
 };
