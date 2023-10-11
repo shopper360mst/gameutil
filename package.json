@@ -1,8 +1,8 @@
 {
-  "name": "gameutil",
-  "version": "1.1.0",
+  "name": "@shopper360mst/gameutil",
+  "version": "1.2.0",
   "description": "A simple common library for games like phaserjs",
-  "main": "GameUtil.js",
+  "main": "game_util.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
